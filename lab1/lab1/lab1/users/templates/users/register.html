@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block title %}Регистрация{% endblock %}
+{% block content %}
+<h1>Регистрация нового пользователя</h1>
+<form class="form-with-validation" action="/users/register/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button class="form-submit">Зарегистрироваться</button>
+</form>
+<style>
+    .form-submit{
+    transform:scale(1);
+    box-shadow: 0px 1px 5px 1px #5d4c66;
+    border-radius: 2px;
+    transition: 0.2s;
+    width: 150px;
+    height: 50px;
+    background-color: #a567df;;
+    }
+    .form-submit:hover{
+      transform:scale(1.05);
+      box-shadow: 0px 2px 5px 2px #4f4f4f;
+      transition: 0.2s;
+      background-color: #d65cd0; 
+    }
+    form{
+        text-align: center;
+    }
+    
+    input[type="text"], input[type="password"] {
+        width: 500px; 
+        padding: 12px 20px; 
+        margin: 10px 0; 
+        border: 2px solid #5d4c66; 
+        border-radius: 5px; 
+        transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+        font-size: 16px; 
+        outline: none; 
+    }
+
+    input[type="text"]:focus, input[type="password"]:focus {
+        border-color: #a567df; 
+        box-shadow: 0 0 5px rgba(166, 105, 223, 0.5); 
+    }
+
+    input[type="text"]:hover, input[type="password"]:hover{
+        border-color: #a567df; 
+    }
+</style>
+{% endblock %}
+

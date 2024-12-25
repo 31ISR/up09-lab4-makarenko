@@ -1,0 +1,28 @@
+{% extends 'layout.html' %} 
+
+{% block title %} 
+    {{ communities.title }} 
+{% endblock %} 
+
+{% block content %}
+<section>
+    <img class="avatar" src="{{ communities.banner.url }}" alt="{{ communities.name }}" />
+    <h1>{{ communities.name }}</h1>
+    <p>{{ communities.description }}</p>
+    <p>{{ communities.date }}</p>
+    <p>{{ communities.free|yesno:"Да,Нет" }}</p>
+</section>
+
+<style>
+    .avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%; 
+        object-fit: cover; 
+        display: block;
+        margin: 20px auto;
+        border: 2px solid #ddd; 
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    }
+</style>
+{% endblock %}

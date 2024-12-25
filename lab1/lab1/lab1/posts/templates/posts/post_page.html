@@ -1,0 +1,69 @@
+{% extends 'layout.html' %} 
+
+{% block title %} 
+    {{ post.title }} 
+{% endblock %} 
+
+{% block content %}
+<section class="post-section">
+    
+    <h1 class="post-title">{{ post.title }}</h1>
+    <p class="post-author">Автор: <strong>{{ post.author.username }}</strong></p>
+    <p class="post-date">{{ post.date }}</p>
+    <p class="post-body">{{ post.body }}</p>
+    
+    <div class="image-container">
+        <img class="banner" src="{{ post.banner.url }}" alt="{{ post.title }}" />
+    </div>
+</section>
+
+<style>
+    body {
+        margin: 0; 
+        padding-top: 400px;
+    }
+
+    .post-section {
+        max-width: 1800px; 
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin: auto;
+    }
+
+    .image-container {
+        display: flex;
+        justify-content: center; 
+        margin: 20px 0;
+    }
+
+    .banner {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    }
+
+    .post-title {
+        font-size: 1.8em; 
+        margin: 20px 0; 
+        text-align: center;
+    }
+
+    .post-author,
+    .post-date {
+        font-size: 0.9em;
+        color: #777;
+        text-align: center;
+        margin: 5px 0; 
+    }
+
+    .post-body {
+        font-size: 1em;
+        line-height: 1.6;
+        margin-top: 20px;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} Приложение Django {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <script src="{% static 'js/main.js' %}" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Главная</a></li>
+            <li><a href="/about">Обо мне</a></li>
+            <li><a href="{% url 'posts:list' %}">Посты</a></li>
+            
+            <li><a href="{% url 'communities:communities' %}">Группы</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'posts:new-post' %}">Новый пост</a></li>
+            <li><a href="{% url 'communities:new-communities' %}">Новая группа</a></li>
+            <form class="logout" action="{% url 'users:logout' %}" method="post">
+                {% csrf_token %}
+                <button class="link raise" target="blank" title="User Logout">Выйти</button>
+            </form>
+            {% else %}
+                <li><a href="{% url 'users:register' %}">Зарегистрироваться</a></li>
+                <li><a href="{% url 'users:login' %}">Войти</a></li>
+            {% endif %}
+                <div class="animation start-home"></div>
+        </ul>
+    </nav>
+    
+    <main>{% block content %} {% endblock %}</main>
+
+    <style>
+    .raise{
+    transform:scale(1);
+    box-shadow: 0px 1px 5px 1px #5d4c66;
+    border-radius: 2px;
+    transition: 0.2s;
+    width: 100px;
+    height: 50px;
+    background-color: #a567df;;
+    }
+    .raise:hover{
+      transform:scale(1.05);
+      box-shadow: 0px 2px 5px 2px #4f4f4f;
+      transition: 0.2s;
+      background-color: #d65cd0; 
+    }
+    </style>
+</body>
+</html>
